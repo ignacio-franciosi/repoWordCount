@@ -248,6 +248,7 @@ string HashMap<K, T>::MaximaOcurrencia() {
         }
         MaximaOcurrencia - 1;
     } while (MaximaOcurrencia == 0);
+    return arregloOrdenado;
 }
 
 #endif // U05_HASH_HASHMAP_HASHMAP_H_
