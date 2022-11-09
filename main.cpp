@@ -14,7 +14,6 @@ Texto texto;
 texto.contarLetrasPalabrasEspacios("archivoPrueba.txt",hashmap);
 
 
-
 }
 
     

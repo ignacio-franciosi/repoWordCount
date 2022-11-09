@@ -87,7 +87,6 @@ void Texto::contarLetrasPalabrasEspacios(string NombreArchivo,HashMap<string,int
 
         
     }
-
   
   while (getline(input_stringstream, lectura, ' ')) {
 
@@ -164,7 +163,7 @@ void quicksort(HashEntry<string, int> *cadena, int limite_izq, int limite_der) {
 
 
 
-
+/*
 void Texto::bubbleAlfabetico(string texto) {
     string aux1;
     int contador = 1;
@@ -212,4 +211,6 @@ void Texto::bubbleAlfabetico(string texto) {
     }
 
 }
+*/
+
 

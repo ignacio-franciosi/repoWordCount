@@ -3,6 +3,7 @@
 
 #include "HashEntry.h"
 #include <iostream>
+
 using namespace std;
 
 //Función HASH realiza alguna operación (la que querramos)
@@ -77,6 +78,8 @@ public:
     int getPalabrasDiferentes();
 
     void hashToArreglo();
+
+    string MaximaOcurrencia();
 };
 
 template<class K, class T>
@@ -127,20 +130,20 @@ T HashMap<K, T>::get(K clave) {
 template<class K, class T>
 void HashMap<K, T>::put(K clave, T valor) {
 
-    unsigned int pos = hashFuncP(clave)%tamanio;
+    unsigned int pos = hashFuncP(clave) % tamanio;
 
-    if(tabla[pos]==NULL){
+    if (tabla[pos] == NULL) {
 
-    tabla[pos] = new HashEntry<K,T>(clave,valor);   //Corresponde a una nueva fila en la tabla
-}
+        tabla[pos] = new HashEntry<K, T>(clave, valor);   //Corresponde a una nueva fila en la tabla
+    }
 
     while (tabla[pos] != NULL) {
         //MANEJO DE COLISIÓN
-        if(tabla[pos]->getClave()==clave){
-        tabla[pos]==NULL;
-        tabla[pos]->setClave(clave);    
-        tabla[pos]->setValor(valor+1);
-        pos++;
+        if (tabla[pos]->getClave() == clave) {
+            tabla[pos] == NULL;
+            tabla[pos]->setClave(clave);
+            tabla[pos]->setValor(valor + 1);
+            pos++;
         }/*else{
         
     
@@ -149,10 +152,8 @@ void HashMap<K, T>::put(K clave, T valor) {
         }*/
     }
 
-    
-    } 
 
-
+}
 
 
 template<class K, class T>
@@ -181,7 +182,7 @@ void HashMap<K, T>::print() {
     std::cout << "i" << "\t" << "Clave" << "\t" << "Valor" << std::endl;
     std::cout << "---------------------" << std::endl;
 
-    
+
     for (int i = 0; i < 17352; i++) {
         std::cout << i << "\t";
         if (tabla[i] != NULL) {
@@ -190,41 +191,63 @@ void HashMap<K, T>::print() {
         }
         std::cout << std::endl;
     }
-            
+
 }
 
-template<class K,class T>
-int HashMap<K,T>::getPalabrasDiferentes(){
+template<class K, class T>
+int HashMap<K, T>::getPalabrasDiferentes() {
 
-int contPalDif=0;
+    int contPalDif = 0;
 
-for(int i=0;i<tamanio;i++){
-    if(tabla[i]!=NULL){
-        contPalDif++;
+    for (int i = 0; i < tamanio; i++) {
+        if (tabla[i] != NULL) {
+            contPalDif++;
+        }
     }
+
+    return contPalDif;
+
 }
 
-return contPalDif;
 
-}
+template<class K, class T>
+void HashMap<K, T>::hashToArreglo() {
 
+    string arreglo[getPalabrasDiferentes()];
 
-template <class K, class T>
-void HashMap<K,T>::hashToArreglo(){
-
-string arreglo[getPalabrasDiferentes()];
-
-for (int i=0;i<tamanio;i++){
-    if(tabla[i]!=NULL){
-    arreglo[i]=tabla[i]->getClave();
+    for (int i = 0; i < tamanio; i++) {
+        if (tabla[i] != NULL) {
+            arreglo[i] = tabla[i]->getClave();
+        }
     }
+
+    for (int i = 0; i < getPalabrasDiferentes(); i++) {
+        cout << arreglo[i] << endl;
+    }
+
+
 }
 
-for (int i=0;i<getPalabrasDiferentes();i++){
-    cout<<arreglo[i]<<endl;
-}
-
-
+template<class K, class T>
+string HashMap<K, T>::MaximaOcurrencia() {
+    string arregloOrdenado;
+    int MaximaOcurrencia = 0, aux;
+    for (int i = 0; i < tamanio; i++) {
+        if (tabla[i] != NULL) {
+            aux = tabla[i]->getValor();
+            if (aux > MaximaOcurrencia) {
+                MaximaOcurrencia = aux;
+            }
+        }
+    }
+    do {
+        for (int i = 0; i < tamanio; i++) {
+            if (tabla[i]->getValor() == MaximaOcurrencia) {
+                arregloOrdenado = arregloOrdenado + tabla[i]->getClave() + " ";
+            }
+        }
+        MaximaOcurrencia - 1;
+    } while (MaximaOcurrencia == 0);
 }
 
 #endif // U05_HASH_HASHMAP_HASHMAP_H_
