@@ -1,0 +1,3 @@
+D:/Repos/AAA-2da-Prog3/cmake-build-debug/CMakeFiles/Funciones/funciones.h.dir
+D:/Repos/AAA-2da-Prog3/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Repos/AAA-2da-Prog3/cmake-build-debug/CMakeFiles/rebuild_cache.dir

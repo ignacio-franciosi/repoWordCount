@@ -1,0 +1,41 @@
+"D:\Program Files\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/Program Files/CLion 2022.2.1/bin/ninja/win/ninja.exe" -G Ninja -S D:\Repos\AAA-2da-Prog3 -B D:\Repos\AAA-2da-Prog3\cmake-build-debug
+CMake Warning (dev) in CMakeLists.txt:
+  No project() command is present.  The top-level CMakeLists.txt file must
+  contain a literal, direct call to the project() command.  Add a line of
+  code such as
+
+    project(ProjectName)
+
+  near the top of the file, but after cmake_minimum_required().
+
+  CMake is pretending there is a "project(Project)" command on the first
+  line.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at CMakeLists.txt:2 (add_executable):
+  Policy CMP0037 is not set: Target names should not be reserved and should
+  match a validity pattern.  Run "cmake --help-policy CMP0037" for policy
+  details.  Use the cmake_policy command to set the policy and suppress this
+  warning.
+
+  The target name "Funciones/funciones.h" is reserved or not valid for
+  certain CMake features, such as generator expressions, and may result in
+  undefined behavior.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done
+-- Generating done
+CMake Error:
+  Running
+
+   'D:/Program Files/CLion 2022.2.1/bin/ninja/win/ninja.exe' '-C' 'D:/Repos/AAA-2da-Prog3/cmake-build-debug' '-t' 'recompact'
+
+  failed with:
+
+   ninja: error: build.ninja:111: multiple rules generate Funciones/funciones.h.exe [-w dupbuild=err]
+
+  
+
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
