@@ -35,7 +35,7 @@ unsigned int miHashFunc(string clave) {
         aux += pow(num, exp++);
 
     }
-    cout << "Hash de la clave " << clave << ": " << aux % 100000 << endl;
+    
     return aux % 100000;
 }
 
@@ -104,11 +104,16 @@ void Texto::contarLetrasPalabrasEspacios(string NombreArchivo,HashMap<string,int
     cout<<"Palabras: "<<contPalabras<<endl;
     cout<<"Saltos de linea: "<<contEspacios<<endl;
     cout<<"Palabras diferentes: "<<hashmap.getPalabrasDiferentes()<<endl;
-    hashmap.MaximaOcurrencia();
+    
+    //hashmap.MaximaOcurrencia();
 
     //hashmap.print();
 
-    hashmap.hashToArreglo();
+    int nAlf;
+    cout<<"Ingrese cantidad palabras a mostrar en orden alfabetico (0 para todas): ";
+    cin>>nAlf;
+    hashmap.bubbleAlfabetico(nAlf);
+
 
     archivo.close();
 }
@@ -118,45 +123,6 @@ void Texto::contarLetrasPalabrasEspacios(string NombreArchivo,HashMap<string,int
 
 
 
-/**
- * Ordena las letras ingresadas alfabeticamente
- * @param arr
- * @param inicio
- * @param fin
- */
-void quicksort(HashEntry<string, int> *cadena, int limite_izq, int limite_der) {
-    int i = limite_izq;
-    int j = limite_der;
-    int mitad = (limite_izq + limite_der) / 2;
-    HashEntry<string, int> pivote = cadena[mitad], aux = cadena[mitad];
-
-    do {
-
-
-        while (cadena[i].getClave() < pivote.getClave()) {
-            i++;
-        }
-        while (cadena[i].getClave() < pivote.getClave()) {
-            j--;
-        }
-        if (j >= i) {
-
-            aux = cadena[i];
-            cadena[i] = cadena[j];
-            cadena[j] = aux;
-            i++;
-            j--;
-
-        }
-    } while (i <= j);
-    if (j > limite_izq) {
-        quicksort(cadena, limite_izq, j);
-    }
-    if (i < limite_der) {
-        quicksort(cadena, i, limite_der);
-    }
-    cout << cadena;
-}
 
 
 

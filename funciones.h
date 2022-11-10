@@ -24,8 +24,7 @@ public:
     int getTamanioTexto();
     void setTamanioTexto(int);
     void contarLetrasPalabrasEspacios(string,HashMap<string,int>);
-    void ordenAlfabetico(HashMap<string,int>, int);
-   // void bubbleAlfabetico(string);
+    
 
 };
 

@@ -77,7 +77,7 @@ public:
 
     int getPalabrasDiferentes();
 
-    void hashToArreglo();
+    void bubbleAlfabetico(int);
 
     void MaximaOcurrencia();
 };
@@ -210,22 +210,53 @@ int HashMap<K, T>::getPalabrasDiferentes() {
 }
 
 
-template<class K, class T>
-void HashMap<K, T>::hashToArreglo() {
+template <class K, class T>
+void HashMap<K,T>::bubbleAlfabetico(int n){
 
-    string arreglo[getPalabrasDiferentes()];
+//Paso de hash a array
+string arreglo[getPalabrasDiferentes()];
 
-    for (int i = 0; i < tamanio; i++) {
-        if (tabla[i] != NULL) {
-            arreglo[i] = tabla[i]->getClave();
+
+for (int i=0, j=0; i<tamanio; i++)
+{
+    if (tabla[i] != nullptr)
+    {
+        arreglo[j] = tabla[i]->getClave();
+        j++;
+    }
+
+
+}
+
+
+
+
+//Bubblesort
+string aux;
+
+for (int i = 0; i < getPalabrasDiferentes(); i++) {
+        for (int j = i + 1; j < getPalabrasDiferentes(); j++) {
+
+
+            if (arreglo[i] > arreglo[j]) {
+
+                aux = arreglo[j];
+                arreglo[j] = arreglo[i];
+                arreglo[i] = aux;
+            }
+
         }
     }
 
-    for (int i = 0; i < getPalabrasDiferentes(); i++) {
-        cout << arreglo[i] << endl;
+    if(n==0){
+        for (int i = 0; i < getPalabrasDiferentes(); i++) {
+        cout << arreglo[i] << ",";
     }
-
-
+    }else{
+    for (int i = 0; i < n; i++) {
+        cout << arreglo[i] << ",";
+    }
+    }
 }
 
 template<class K, class T>
