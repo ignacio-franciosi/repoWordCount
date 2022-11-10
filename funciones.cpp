@@ -100,13 +100,11 @@ void Texto::contarLetrasPalabrasEspacios(string NombreArchivo,HashMap<string,int
   
     
 }
-
-
-
     cout<<"Letras: "<<contLetras<<endl;
     cout<<"Palabras: "<<contPalabras<<endl;
     cout<<"Saltos de linea: "<<contEspacios<<endl;
     cout<<"Palabras diferentes: "<<hashmap.getPalabrasDiferentes()<<endl;
+    hashmap.MaximaOcurrencia();
 
     //hashmap.print();
 

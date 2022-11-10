@@ -79,7 +79,7 @@ public:
 
     void hashToArreglo();
 
-    string MaximaOcurrencia();
+    void MaximaOcurrencia();
 };
 
 template<class K, class T>
@@ -183,7 +183,7 @@ void HashMap<K, T>::print() {
     std::cout << "---------------------" << std::endl;
 
 
-    for (int i = 0; i < 17352; i++) {
+    for (int i = 0; i < tamanio; i++) {
         std::cout << i << "\t";
         if (tabla[i] != NULL) {
             std::cout << tabla[i]->getClave() << "\t";
@@ -229,12 +229,14 @@ void HashMap<K, T>::hashToArreglo() {
 }
 
 template<class K, class T>
-string HashMap<K, T>::MaximaOcurrencia() {
+void HashMap<K, T>::MaximaOcurrencia() {
     string arregloOrdenado;
     int MaximaOcurrencia = 0, aux;
+    cout<<"....................................\n";
     for (int i = 0; i < tamanio; i++) {
         if (tabla[i] != NULL) {
             aux = tabla[i]->getValor();
+            cout<<"aux "<<aux<<endl;
             if (aux > MaximaOcurrencia) {
                 MaximaOcurrencia = aux;
             }
@@ -244,11 +246,12 @@ string HashMap<K, T>::MaximaOcurrencia() {
         for (int i = 0; i < tamanio; i++) {
             if (tabla[i]->getValor() == MaximaOcurrencia) {
                 arregloOrdenado = arregloOrdenado + tabla[i]->getClave() + " ";
+                cout<<"Arreglo mitad: "<<arregloOrdenado<<endl;
             }
         }
         MaximaOcurrencia - 1;
     } while (MaximaOcurrencia == 0);
-    return arregloOrdenado;
+        cout<<"\nArreglo Ordenado "<<arregloOrdenado;
 }
 
 #endif // U05_HASH_HASHMAP_HASHMAP_H_
