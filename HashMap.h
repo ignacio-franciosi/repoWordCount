@@ -79,7 +79,7 @@ public:
 
     void bubbleAlfabetico(int);
 
-    void MaximaOcurrencia();
+    void ocurrencias(int);
 };
 
 template<class K, class T>
@@ -260,29 +260,35 @@ for (int i = 0; i < getPalabrasDiferentes(); i++) {
 }
 
 template<class K, class T>
-void HashMap<K, T>::MaximaOcurrencia() {
+void HashMap<K, T>::ocurrencias(int n) { // hacer con n ocurrencias
+
     string arregloOrdenado;
     int MaximaOcurrencia = 0, aux;
-    cout<<"....................................\n";
+    cout << "....................................\n";
     for (int i = 0; i < tamanio; i++) {
         if (tabla[i] != NULL) {
             aux = tabla[i]->getValor();
-            cout<<"aux "<<aux<<endl;
+
             if (aux > MaximaOcurrencia) {
                 MaximaOcurrencia = aux;
+                cout<< "Max ocurrencia: "<<MaximaOcurrencia<<endl;
+
             }
         }
     }
-    do {
+    while (MaximaOcurrencia != 0) {
+
         for (int i = 0; i < tamanio; i++) {
-            if (tabla[i]->getValor() == MaximaOcurrencia) {
-                arregloOrdenado = arregloOrdenado + tabla[i]->getClave() + " ";
-                cout<<"Arreglo mitad: "<<arregloOrdenado<<endl;
+            if (tabla[i] != NULL) {
+                if (tabla[i]->getValor() == MaximaOcurrencia) {
+                    //cout << tabla[i]->getClave() << endl;
+                    arregloOrdenado = arregloOrdenado + tabla[i]->getClave() + " ";
+                }
             }
         }
-        MaximaOcurrencia - 1;
-    } while (MaximaOcurrencia == 0);
-        cout<<"\nArreglo Ordenado "<<arregloOrdenado;
+        MaximaOcurrencia--;
+    }
+    cout << "\nArreglo Ordenado " << arregloOrdenado;
 }
 
 #endif // U05_HASH_HASHMAP_HASHMAP_H_
